@@ -4,7 +4,7 @@
 SELECT count(emp_no) from employees;
 
 -- Get the highest salary available
-Select max(salary) from salaries
+SELECT max(salary) from salaries;
 
 -- Get the total amount of salaries paid
-SELECT sum(salary) from salaries
+SELECT sum(salary) from salaries;
