@@ -23,3 +23,17 @@ SELECT  a.emp_no,
  and c.from_date = (b.from_date + INTERVAL '2 days')
  ORDER by a.emp_no;
  
+ -- more complex inner join
+ SELECT  a.emp_no,
+    concat( a.first_name, a.last_name ) as "name",
+    b.salary,
+    COALESCE(c.from_date::text, '-') as "title taken on"
+ FROM employees as a 
+ inner join salaries as b on a.emp_no = b.emp_no
+ INNER join titles as c 
+ on c.emp_no = a.emp_no and (
+ c.from_date = (b.from_date + INTERVAL '2 days') OR
+ c.from_date = b.from_date
+ )
+ ORDER by a.emp_no;
+
